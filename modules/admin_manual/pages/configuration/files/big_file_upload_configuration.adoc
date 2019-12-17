@@ -39,7 +39,6 @@ PrivateTmp=false
 ----
 ====
 
-
 == Configuring Your Web Server
 
 NOTE: ownCloud comes with its own `owncloud/.htaccess` file. 
@@ -68,7 +67,6 @@ php_value max_execution_time 3600
 The {mod_reqtimeout-url}[mod_reqtimeout] Apache module could also stop large uploads from completing. 
 If you're using this module and getting failed uploads of large files, either disable it in your Apache config or raise the configured `RequestReadTimeout` timeouts.
 
-
 ==== Disable mod_reqtimeout On Ubuntu
 
 On Ubuntu, you can disable the module by running the following command:
@@ -78,19 +76,8 @@ On Ubuntu, you can disable the module by running the following command:
 a2dismod reqtimeout
 ----
 
-==== Disable mod_reqtimeout On CentOS
-
-On CentOS, comment out the following line in `/etc/httpd/conf/httpd.conf`:
-
-[source,apache]
-----
-LoadModule reqtimeout_module modules/mod_reqtimeout.so
-----
-
-When you have done run `asdismod` or updated `/etc/httpd/conf/httpd.conf`, restart Apache.
-
 TIP: There are also several other configuration options in your web server config which could prevent the upload of larger files.
-Please see your web server's manual, for how to configure those values correctly:
+Please see your web server's manual, for how to configure those values correctly.
 
 === Apache
 
