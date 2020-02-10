@@ -2,11 +2,10 @@
 
 image:kdes1.png[image]
 
-From KDE SC 4.8 and forward setting up ownCloud is very easy. Note that
-the KDE calendar needs to have the ownCloud Calendar and Contacts apps
-enabled on the ownCloud server. You need both and not just the Calendar.
-From System Settings Personal Information/Akonadi Resources
-Configuration select DAV Groupware resource.
+From KDE SC 4.8 and forward setting up ownCloud is very easy.
+Note that the KDE calendar needs to have the ownCloud Calendar and Contacts apps enabled on the ownCloud server.
+You need both and not just the Calendar.
+From System Settings Personal Information/Akonadi Resources Configuration select DAV Groupware resource.
 
 image:kdes2.png[image]
 
@@ -18,11 +17,13 @@ Select ownCloud in the drop down list and click btn:[Next].
 
 image:kdes4.png[image]
 
-Enter the host name and installation path. If you do not use SSL remember to de-select "Use secure connection".
+Enter the host name and installation path.
+If you do not use SSL remember to de-select "Use secure connection".
 
 image:kdes5.png[image]
 
-Test the connection. If everything went well you should see a message like the one below.
+Test the connection.
+If everything went well you should see a message like the one below.
 
 image:kdes6.png[image]
 

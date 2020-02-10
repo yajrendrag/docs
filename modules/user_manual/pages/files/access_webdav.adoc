@@ -5,42 +5,27 @@
 
 == Introduction
 
-ownCloud fully supports the WebDAV protocol, and you can connect and
-synchronize with your ownCloud files over WebDAV. In this chapter you
-will learn how to connect Linux, Mac OS X, Windows, and mobile devices
-to your ownCloud server via WebDAV. Before we get into configuring
-WebDAV, let’s take a quick look at the recommended way of connecting
-client devices to your ownCloud servers.
+ownCloud fully supports the WebDAV protocol, and you can connect and synchronize with your ownCloud files over WebDAV.
+In this chapter you will learn how to connect Linux, Mac OS X, Windows, and mobile devices to your ownCloud server via WebDAV.
+Before we get into configuring WebDAV, let’s take a quick look at the recommended way of connecting client devices to your ownCloud servers.
 
 == ownCloud Desktop and Mobile Clients
 
-The recommended method for keeping your desktop PC synchronized with
-your ownCloud server is by using the
-https://owncloud.org/install/#install-clients[ownCloud Desktop Client].
-You can configure the ownCloud client to save files in any local
-directory you want, and you choose which directories on the ownCloud
-server to sync with. The client displays the current connection status
-and logs all activity, so you always know which remote files have been
-downloaded to your PC, and you can verify that files created and updated
-on your local PC are properly synchronized with the server.
+The recommended method for keeping your desktop PC synchronized with your ownCloud server is by using the https://owncloud.org/install/#install-clients[ownCloud Desktop Client].
+You can configure the ownCloud client to save files in any local directory you want, and you choose which directories on the ownCloud server to sync with.
+The client displays the current connection status and logs all activity, so you always know which remote files have been downloaded to your PC, and you can verify that files created and updated on your local PC are properly synchronized with the server.
 
-The recommended method for syncing your ownCloud server with Android and
-Apple iOS devices is by using the
-https://owncloud.org/install/#install-clients[ownCloud mobile apps].
+The recommended method for syncing your ownCloud server with Android and Apple iOS devices is by using the https://owncloud.org/install/#install-clients[ownCloud mobile apps].
 
-To connect to your ownCloud server with the *ownCloud* mobile apps, use
-the base URL and folder only:
+To connect to your ownCloud server with the *ownCloud* mobile apps, use the base URL and folder only:
 
 ----
 example.com/owncloud
 ----
 
-In addition to the mobile apps provided by ownCloud, you can use other
-apps to connect to ownCloud from your mobile device using WebDAV.
-http://seanashton.net/webdav/[WebDAV Navigator] is a good (proprietary) app for
-https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite[Android devices],
-https://itunes.apple.com/app/webdav-navigator/id382551345[iPhones], and
-http://appworld.blackberry.com/webstore/content/46816[BlackBerry devices].
+In addition to the mobile apps provided by ownCloud, you can use other apps to connect to ownCloud from your mobile device using WebDAV.
+http://seanashton.net/webdav/[WebDAV Navigator] is a good (proprietary) app for https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite[Android devices],
+https://itunes.apple.com/app/webdav-navigator/id382551345[iPhones], and http://appworld.blackberry.com/webstore/content/46816[BlackBerry devices].
 The URL to use on these is:
 
 ----
@@ -49,25 +34,19 @@ example.com/owncloud/remote.php/webdav
 
 == WebDAV Configuration
 
-If you prefer, you may also connect your desktop PC to your ownCloud
-server by using the WebDAV protocol rather than using a special client
-application. Web Distributed Authoring and Versioning (WebDAV) is a
-Hypertext Transfer Protocol (HTTP) extension that makes it easy to
-create, read, and edit files on Web servers. With WebDAV you can access
-your ownCloud shares on Linux, Mac OS X and Windows in the same way as
-any remote network share, and stay synchronized.
+If you prefer, you may also connect your desktop PC to your ownCloud server by using the WebDAV protocol rather than using a special client application.
+Web Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol (HTTP) extension that makes it easy to create, read, and edit files on Web servers.
+With WebDAV you can access your ownCloud shares on Linux, Mac OS X and Windows in the same way as any remote network share, and stay synchronized.
 
 NOTE: In the following examples, You must adjust *example.com/* to the URL of your ownCloud server installation.
 
 == Accessing Files Using Linux
 
-You can access files in Linux operating systems using the following
-methods.
+You can access files in Linux operating systems using the following methods.
 
 === Nautilus File Manager
 
-Use the `davs://` protocol to connect the Nautilus file manager to your
-ownCloud share:
+Use the `davs://` protocol to connect the Nautilus file manager to your ownCloud share:
 
 ----
 davs://example.com/owncloud/remote.php/webdav
@@ -79,8 +58,7 @@ image:webdav_gnome3_nautilus.png[screenshot of configuring Nautilus file manager
 
 === Accessing Files with KDE and Dolphin File Manager
 
-To access your ownCloud files using the Dolphin file manager in KDE, use
-the `webdav://` protocol:
+To access your ownCloud files using the Dolphin file manager in KDE, use the `webdav://` protocol:
 
 ----
 webdav://example.com/owncloud/remote.php/webdav
@@ -109,11 +87,9 @@ image:files/access_webdav/dolphin-network-folder-wizard.png[Dolphin Network Fold
 
 == Creating WebDAV Mounts on the Linux Command Line
 
-You can create WebDAV mounts from the Linux command line. This is useful
-if you prefer to access ownCloud the same way as any other remote
-filesystem mount. The following example shows how to create a personal
-mount and have it mounted automatically every time you log in to your
-Linux computer.
+You can create WebDAV mounts from the Linux command line.
+This is useful if you prefer to access ownCloud the same way as any other remote filesystem mount.
+The following example shows how to create a personal mount and have it mounted automatically every time you log in to your Linux computer.
 
 . Install the `davfs2` WebDAV filesystem driver, which allows you to
 mount WebDAV shares just like any other remote filesystem. Use this
@@ -144,24 +120,27 @@ mkdir ~/.davfs2
 ----
 sudo cat /etc/davfs2/secrets > ~/.davfs2/secrets
 ----
-. Make the permissions read-write owner only:
+.
+Make the permissions read-write owner only:
 +
 ----
 chmod 600 ~/.davfs2/secrets
 ----
-. Add your ownCloud login credentials to the end of the `secrets`
-file, using your ownCloud server URL and your ownCloud username and
-password:
+.
+Add your ownCloud login credentials to the end of the `secrets`
+file, using your ownCloud server URL and your ownCloud username and password:
 +
 ----
 /home/<username>/owncloud <username> <password>
 ----
-. Add the mount information to `/etc/fstab`:
+.
+Add the mount information to `/etc/fstab`:
 +
 ----
 https://example.com/owncloud/remote.php/webdav /home/<username>/owncloud davfs user,rw,auto 0 0
 ----
-. Then test that it mounts and authenticates by running the following command. 
+.
+Then test that it mounts and authenticates by running the following command.
   If you set it up correctly you won’t need root permissions:
 +
 ----
@@ -173,9 +152,8 @@ mount ~/owncloud
 umount ~/owncloud
 ----
 
-Now every time you login to your Linux system your ownCloud share should
-automatically mount via WebDAV in your `~/owncloud` directory. If you
-prefer to mount it manually, change `auto` to `noauto` in `/etc/fstab`.
+Now every time you login to your Linux system your ownCloud share should automatically mount via WebDAV in your `~/owncloud` directory.
+If you prefer to mount it manually, change `auto` to `noauto` in `/etc/fstab`.
 
 == Known Issues
 
@@ -183,8 +161,7 @@ prefer to mount it manually, change `auto` to `noauto` in `/etc/fstab`.
 
 ==== Solution
 
-If you experience trouble when you create a file in the directory, edit
-`/etc/davfs2/davfs2.conf` and add:
+If you experience trouble when you create a file in the directory, edit `/etc/davfs2/davfs2.conf` and add:
 
 ----
 use_locks 0
@@ -194,11 +171,11 @@ use_locks 0
 
 ==== Solution
 
-If you use a self-signed certificate, you will get a warning. To change
-this, you need to configure `davfs2` to recognize your certificate. Copy
-`mycertificate.pem` to `/etc/davfs2/certs/`. Then edit
-`/etc/davfs2/davfs2.conf` and uncomment the line `servercert`. Now add
-the path of your certificate as in this example:
+If you use a self-signed certificate, you will get a warning.
+To change this, you need to configure `davfs2` to recognize your certificate.
+Copy `mycertificate.pem` to `/etc/davfs2/certs/`.
+Then edit `/etc/davfs2/davfs2.conf` and uncomment the line `servercert`.
+Now add the path of your certificate as in this example:
 
 ----
 servercert   /etc/davfs2/certs/mycertificate.pem
@@ -206,16 +183,17 @@ servercert   /etc/davfs2/certs/mycertificate.pem
 
 == Accessing Files Using Mac OS X
 
-NOTE: The Mac OS X Finder suffers from a 
-http://sabre.io/dav/clients/finder/[series of implementation problems]
+NOTE: The Mac OS X Finder suffers from a http://sabre.io/dav/clients/finder/[series of implementation problems]
 and should only be used if the ownCloud server runs on *Apache* and *mod_php*.
 You can use a tool like {ocsmount-url}[ocsmount] to mount without those issues.
 
 To access files through the Mac OS X Finder:
 
-. Choose menu:Go[Connect to Server]. +
+.
+Choose menu:Go[Connect to Server]. +
 The "Connect to Server" window opens.
-. Specify the address of the server in the *Server Address* field. +
+.
+Specify the address of the server in the *Server Address* field. +
 image:osx_webdav1.png[Screenshot of entering your ownCloud server address on Mac OS X] +
 +
 For example, the URL used to connect to the ownCloud server from the Mac OS X Finder is: +
@@ -233,21 +211,17 @@ https://www.wikihow.com/Connect-to-a-Server-on-a-Mac[wikihow documentation]
 
 == Accessing Files Using Microsoft Windows
 
-It is best to use a suitable WebDAV client from the
-http://www.webdav.org/projects/[WebDAV Project page] .
+It is best to use a suitable WebDAV client from the http://www.webdav.org/projects/[WebDAV Project page] .
 
-If you must use the native Windows implementation, you can map ownCloud
-to a new drive. Mapping to a drive enables you to browse files stored on
-an ownCloud server the way you would files stored in a mapped network drive.
+If you must use the native Windows implementation, you can map ownCloud to a new drive.
+Mapping to a drive enables you to browse files stored on an ownCloud server the way you would files stored in a mapped network drive.
 
-Using this feature requires network connectivity. If you want to store
-your files offline, use the ownCloud Desktop Client to sync all files on
-your ownCloud to one or more directories of your local hard drive.
+Using this feature requires network connectivity.
+If you want to store your files offline, use the ownCloud Desktop Client to sync all files on your ownCloud to one or more directories of your local hard drive.
 
-NOTE: Prior to mapping your drive, you must permit the use of Basic Authentication in the
-Windows Registry. The procedure is documented in 
-http://support.microsoft.com/kb/841215[KB841215] and differs between
-Windows XP/Server 2003 and Windows Vista/7. Please follow the Knowledge Base article before proceeding, 
+NOTE: Prior to mapping your drive, you must permit the use of Basic Authentication in the Windows Registry.
+The procedure is documented in http://support.microsoft.com/kb/841215[KB841215] and differs between Windows XP/Server 2003 and Windows Vista/7.
+Please follow the Knowledge Base article before proceeding,
 and follow the Vista instructions if you run Windows 7.
 
 === Mapping Drives With the Command Line
@@ -271,9 +245,8 @@ net use Z: https://<drive_path>/remote.php/webdav /user:youruser yourpassword
 The computer maps the files of your ownCloud account to the drive letter Z.
 ""
 +
-NOTE: Though not recommended, you can also mount the ownCloud server using HTTP, leaving the connection unencrypted. 
-If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a 
-VPN tunnel to provide the necessary security.
+NOTE: Though not recommended, you can also mount the ownCloud server using HTTP, leaving the connection unencrypted.
+If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security.
 +
 An alternative command syntax is:
 +
@@ -296,7 +269,8 @@ For example:
 https://example.com/owncloud/remote.php/webdav
 ----
 +
-NOTE: For SSL protected servers, check *Reconnect at logon* to ensure that the mapping is persistent upon subsequent reboots. If you want to connect to the ownCloud server as a different user, check *Connect using different credentials*.
+NOTE: For SSL protected servers, check *Reconnect at logon* to ensure that the mapping is persistent upon subsequent reboots.
+If you want to connect to the ownCloud server as a different user, check *Connect using different credentials*.
 +
 image:explorer_webdav.png[image]
 . Click the btn:[Finish] button. +
@@ -346,8 +320,7 @@ https://example.com/owncloud/public.php/webdav
 in a WebDAV client, use the share token as username and the (optional)
 share password as password.
 
-NOTE: menu:Settings[Administration > Sharing > Allow users on this server
-to send shares to other servers] needs to be enabled in order to make this feature work.
+NOTE: menu:Settings[Administration > Sharing > Allow users on this server to send shares to other servers] needs to be enabled in order to make this feature work.
 
 == Known Problems
 
@@ -356,16 +329,14 @@ to send shares to other servers] needs to be enabled in order to make this featu
 ==== Solution 1
 
 The Windows WebDAV Client might not support Server Name Indication (SNI)
-on encrypted connections. If you encounter an error mounting an
-SSL-encrypted ownCloud instance, contact your provider about assigning a
-dedicated IP address for your SSL-based server.
+on encrypted connections.
+If you encounter an error mounting an SSL-encrypted ownCloud instance, contact your provider about assigning a dedicated IP address for your SSL-based server.
 
 ==== Solution 2
 
-The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2
-connections. If you have restricted your server config to only provide
-TLSv1.1 and above the connection to your server might fail. Please refer to the
-https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features[WinHTTP]
+The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections.
+If you have restricted your server config to only provide TLSv1.1 and above the connection to your server might fail.
+Please refer to the https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features[WinHTTP]
 documentation for further information.
 
 === Problem: The File Size Exceeds the Limit Allowed and Cannot be Saved
@@ -375,8 +346,8 @@ You receive the following error message: +
 
 ==== Solution
 
-Windows limits the maximum size a file transferred from or to a WebDAV
-share may have. You can increase the value *FileSizeLimitInBytes* in
+Windows limits the maximum size a file transferred from or to a WebDAV share may have.
+You can increase the value *FileSizeLimitInBytes* in
 *HKEY_LOCAL_MacHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters*
 by clicking on btn:[Modify].
 
@@ -387,8 +358,7 @@ To increase the limit to the maximum value of 4GB, select *Decimal*, enter a val
 
 ==== Solution
 
-Known problems and their solutions are documented in the
-https://support.microsoft.com/kb/2123563[KB2123563] article.
+Known problems and their solutions are documented in the https://support.microsoft.com/kb/2123563[KB2123563] article.
 
 === Problem: WebDAV Drive in Windows Using Self-Signed Certificate
 
@@ -420,13 +390,11 @@ Exit MMC.
 
 === Problem: Upload Large Files or Upload Takes Long
 
-You cannot download more than 50 MB or upload large Files when the
-upload takes longer than 30 minutes using Web Client in Windows 7.
+You cannot download more than 50 MB or upload large Files when the upload takes longer than 30 minutes using Web Client in Windows 7.
 
 ==== Solution
 
-Workarounds are documented in the
-https://support.microsoft.com/kb/2668751[KB2668751] article.
+Workarounds are documented in the https://support.microsoft.com/kb/2668751[KB2668751] article.
 
 === Problem: The Network Name Cannot be Found
 
@@ -514,8 +482,8 @@ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/owncloud/remote.
 </d:multistatus>
 ----
 
-To get the file id of a file, regardless of location, you need to make a
-PROPFIND request. This request requires two things:
+To get the file id of a file, regardless of location, you need to make a PROPFIND request.
+This request requires two things:
 
 . A PROPFIND XML element in the body of the request method.
 . The path to the file that you want to find out more about
@@ -531,7 +499,8 @@ Here’s an example PROPFIND XML element, which we’ll store as `propfind-filei
 </a:propfind>
 ----
 
-NOTE: You could pass this directly to the Curl request. However, it can often be easier to create,
+NOTE: You could pass this directly to the Curl request.
+However, it can often be easier to create,
 maintain, and to share, if it’s created in a standalone file.
 
 With the file created, make the request by running the following Curl command:
@@ -544,8 +513,8 @@ curl -u username:password -X PROPFIND \
   'http://localhost/remote.php/dav/files/admin/Photos/San%20Francisco.jpg'
 ----
 
-This will return an XML response payload similar to the following
-example. It contains the relative path to the file and the fileid of the file.
+This will return an XML response payload similar to the following example.
+It contains the relative path to the file and the fileid of the file.
 
 [source,xml]
 ----
@@ -563,6 +532,6 @@ example. It contains the relative path to the file and the fileid of the file.
 </d:multistatus>
 ----
 
-NOTE: The example above’s been formatted for readability, using 
-http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint[xmllint],
-which is part of libxml2. To format it as it is listed above, pipe the previous command to `xmllint --format -`.
+NOTE: The example above’s been formatted for readability, using http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint[xmllint],
+which is part of libxml2.
+To format it as it is listed above, pipe the previous command to `xmllint --format -`.

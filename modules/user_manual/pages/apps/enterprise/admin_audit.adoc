@@ -116,48 +116,49 @@ Each event will contain, at a minimum, the data in the following table:
 |Type
 |Description
 
-|`remoteAddr` 
-|string 
-|The remote client IP 
+|`remoteAddr`
+|string
+|The remote client IP
 
-|`user` 
-|string 
-|The UID of the user performing the action. Or "IP x.x.x.x.", "cron", "CLI", "unknown" 
+|`user`
+|string
+|The UID of the user performing the action.
+Or "IP x.x.x.x.", "cron", "CLI", "unknown"
 
-|`url` 
-|string 
-|The process request URI 
+|`url`
+|string
+|The process request URI
 
-|`method` 
-|string 
-|The HTTP request method 
+|`method`
+|string
+|The HTTP request method
 
-|`userAgent` 
-|string 
-|The HTTP request user agent 
+|`userAgent`
+|string
+|The HTTP request user agent
 
-|`time` 
-|string 
-|The time of the event e.g.,: 2018-05-08T08:26:00+00:00 
+|`time`
+|string
+|The time of the event e.g.,: 2018-05-08T08:26:00+00:00
 
-|`app` 
-|string 
-|Always 'admin_audit' 
+|`app`
+|string
+|Always 'admin_audit'
 
-|`message` 
-|string 
-|Sentence explaining the action 
+|`message`
+|string
+|Sentence explaining the action
 
-|`action` 
-|string 
-|Unique action identifier e.g.,: file_delete or public_link_created 
+|`action`
+|string
+|Unique action identifier e.g.,: file_delete or public_link_created
 
-|`CLI` 
-|boolean 
-|If the action was performed from the CLI 
+|`CLI`
+|boolean
+|If the action was performed from the CLI
 
-|`level` 
-|integer 
+|`level`
+|integer
 |The log level of the entry (usually 1 for audit events)
 |===
 
